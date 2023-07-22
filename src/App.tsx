@@ -13,39 +13,39 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>Welcome to Tauri!</h1>
+    <div className="flex flex-col text-center ">
+      <h1 className="text-4xl font-bold">CRM</h1>
 
-      <div className="row">
+      <div className="flex justify-center">
         <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src="/vite.svg" className="h-10 mx-5 logo vite" alt="Vite logo" />
         </a>
       </div>
 
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
+      <form className="flex flex-col">
+        <input className="rounded my-2 h-10 p-3 text-gray-600 text-semibold"
           id="greet-input"
           onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
+          placeholder="Usuário"
         />
-        <button type="submit">Greet</button>
-      </form>
 
-      <p>{greetMsg}</p>
+        <input type="password" className="rounded my-2 h-10 p-3 text-gray-600 text-semibold"
+          id="greet-input"
+          onChange={(e) => setName(e.currentTarget.value)}
+          placeholder="Senha"
+        />
+
+      <button className="rounded m-5 p-3 btn btn-blue ease-in-out transition duration-350 border-2
+        text-gray-300 font-semibold
+        bg-transparent  border-gray-500
+        hover:bg-neutral-600 hover:text-white hover:border-black" 
+        type="submit">Entrar</button>
+      </form>
+      
+      <span className="fixed bottom-5 right-5 flex text-lg">
+        <p className="font-bold pr-1">NRT</p> <p>Software®</p>
+      </span>
+      
     </div>
   );
 }
