@@ -15,14 +15,14 @@ struct Person {
 
 
 use rusqlite::{Connection, Result};
-
+use serde_json::json;
 
 
 #[tauri::command]
 async fn database_test() -> Result<String, String> {
     // Err("This failed!");
     let conn: Connection = Connection::open_in_memory().map_err(|err| err.to_string())?;
-
+    // Imprimir a string JSON resultante
     conn.execute(
         "CREATE TABLE person (
             id   INTEGER PRIMARY KEY,
@@ -51,11 +51,26 @@ async fn database_test() -> Result<String, String> {
             data: row.get(2)?,
         })
     }).map_err(|err| err.to_string())?;
+    
+    // Criar um vetor de objetos JSON para armazenar os registros da tabela
+    let mut data: Vec<serde_json::Value> = Vec::new();
 
     for person in person_iter {
-        println!("Found person {:?}", person.unwrap());
+        let person = person.map_err(|err| err.to_string())?;
+        let person_json = json!({
+            "id": person.id,
+            "name": person.name,
+            "data": person.data
+        });
+        data.push(person_json);
     }
-    Ok("This worked!".to_string())
+
+    // Serializar o vetor em uma string JSON
+    let json_string = serde_json::to_string(&data).map_err(|err| err.to_string())?;
+
+    // Retornar a string JSON resultante
+    Ok(json_string)
+
 }
 
 // #[tauri::command]

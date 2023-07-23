@@ -19,7 +19,7 @@ function App() {
   const [name, setName] = useState("");
     async function database() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    await invoke("database_test").then(e => console.log(e)).catch(e => console.log(e, 'maizenas erradas'));
+    await invoke("database_test").then(e => console.log(JSON.parse(e))).catch(e => console.log(e, 'maizenas erradas'));
   }
   database();
   // async function greet() {
