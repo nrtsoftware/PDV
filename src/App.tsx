@@ -13,13 +13,16 @@ const db = await Database.load("sqlite:app.vaitomarnocustyles");
 // const db = await Database.load("postgres://postgres:password@localhost/test");
 
 // await db.execute("INSERT INTO ...");
-
+// oi
 function App() {
   // const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
+  const [data, setData] = useState([]);
     async function database() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    await invoke("database_test").then(e => console.log(JSON.parse(e))).catch(e => console.log(e, 'maizenas erradas'));
+    await invoke("database_test")
+      .then(e => setData(JSON.parse(e)))
+      .catch(e => console.log(e, 'maizenas erradas'));
   }
   database();
   // async function greet() {
@@ -29,7 +32,7 @@ function App() {
   return (
     <div className="flex flex-col text-center ">
       <h1 className="text-4xl font-bold">CRM</h1>
-
+    {data.map(e => <div key={e.name}> {e.name} </div>)}
       <div className="flex justify-center">
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="h-10 mx-5 logo vite" alt="Vite logo" />
