@@ -38,9 +38,20 @@ async fn database_test() -> Result<String, String> {
         name: "Nivaldinho".to_string(),
         data: None,
     };
+
+    let me2 = Person {
+        id: 0,
+        name: "barosso".to_string(),
+        data: None,
+    };
     conn.execute(
         "INSERT INTO person (name, data) VALUES (?1, ?2)",
         (&me.name, &me.data),
+    ).map_err(|err| err.to_string())?;
+
+    conn.execute(
+        "INSERT INTO person (name, data) VALUES (?1, ?2)",
+        (&me2.name, &me2.data),
     ).map_err(|err| err.to_string())?;
 
     let mut stmt = conn.prepare("SELECT id, name, data FROM person").map_err(|err| err.to_string())?;
