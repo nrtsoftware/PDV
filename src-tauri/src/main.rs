@@ -21,7 +21,7 @@ use serde_json::json;
 #[tauri::command]
 async fn database_test() -> Result<String, String> {
     // Err("This failed!");
-    let conn: Connection = Connection::open_in_memory().map_err(|err| err.to_string())?;
+    let conn: Connection = Connection::open("./app.sqlite3").map_err(|err| err.to_string())?;
     // Imprimir a string JSON resultante
     conn.execute(
         "CREATE TABLE person (
