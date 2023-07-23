@@ -1,12 +1,12 @@
 import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
-// import { invoke } from "@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
 import Database from "tauri-plugin-sql-api";
 
 // sqlite. The path is relative to `tauri::api::path::BaseDirectory::App`.
-const db = await Database.load("sqlite:app.sqlite3");
+const db = await Database.load("sqlite:app.vaitomarnocustyles");
 // mysql
 // const db = await Database.load("mysql://user:pass@host/database");
 // postgres
@@ -17,12 +17,15 @@ const db = await Database.load("sqlite:app.sqlite3");
 function App() {
   // const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
-
+    async function database() {
+    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+    await invoke("database_test").then(e => console.log(e)).catch(e => console.log(e, 'maizenas erradas'));
+  }
+  database();
   // async function greet() {
   //   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
   //   setGreetMsg(await invoke("greet", { name }));
   // }
-  console.log(db)
   return (
     <div className="flex flex-col text-center ">
       <h1 className="text-4xl font-bold">CRM</h1>
