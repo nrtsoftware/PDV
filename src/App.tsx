@@ -1,12 +1,12 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/tauri";
+// import reactLogo from "./assets/react.svg";
+// import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
 import Database from "tauri-plugin-sql-api";
 
 // sqlite. The path is relative to `tauri::api::path::BaseDirectory::App`.
-const db = await Database.load("sqlite:test.db");
+const db = await Database.load("sqlite:app.sqlite3");
 // mysql
 // const db = await Database.load("mysql://user:pass@host/database");
 // postgres
@@ -15,14 +15,14 @@ const db = await Database.load("sqlite:test.db");
 // await db.execute("INSERT INTO ...");
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
+  // const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-  }
-
+  // async function greet() {
+  //   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+  //   setGreetMsg(await invoke("greet", { name }));
+  // }
+  console.log(db)
   return (
     <div className="flex flex-col text-center ">
       <h1 className="text-4xl font-bold">CRM</h1>
@@ -32,7 +32,7 @@ function App() {
           <img src="/vite.svg" className="h-10 mx-5 logo vite" alt="Vite logo" />
         </a>
       </div>
-
+      { name }
       <form className="flex flex-col">
         <input className="rounded my-2 h-10 p-3 text-gray-600 text-semibold"
           id="greet-input"
