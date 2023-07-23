@@ -12,7 +12,7 @@ const db = await Database.load("sqlite:test.db");
 // postgres
 // const db = await Database.load("postgres://postgres:password@localhost/test");
 
-await db.execute("INSERT INTO ...");
+// await db.execute("INSERT INTO ...");
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
