@@ -1,6 +1,13 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 #![allow(non_snake_case)]
+#![allow(unused)] // Comment soon as possible
+use crate::prelude::*;
+
+mod error;
+mod prelude;
+mod utils;
+
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 // #[tauri::command]
@@ -168,7 +175,9 @@ async fn database_test() -> Result<String, String> {
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![database_test])
-
+        .plugin(tauri_plugin_store::Builder::default().build())
+        
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
+
 }

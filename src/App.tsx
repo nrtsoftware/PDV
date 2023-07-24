@@ -2,6 +2,18 @@ import { useState, useEffect, Key } from "react";
 // import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
+import { Store } from "tauri-plugin-store-api";
+
+const store = new Store(".settings.dat");
+
+await store.set("another-key", { value: 3 });
+await store.save(); // this manually saves the store, otherwise the store is only saved when your app is closed
+
+const val = await store.get("some-key");
+const val2 = await store.get("another-key");
+console.log(val)
+console.log(val2)
+
 
 // sqlite. The path is relative to `tauri::api::path::BaseDirectory::App`.
 // const db = await Database.load("sqlite:app.vaitomarnocustyles");
@@ -50,13 +62,13 @@ function App() {
       { name }
       <form className="flex flex-col">
         <input className="rounded my-2 h-10 p-3 text-gray-600 text-semibold"
-          id="greet-input"
+          
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="Usuário"
         />
 
         <input type="password" className="rounded my-2 h-10 p-3 text-gray-600 text-semibold"
-          id="greet-input"
+          
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="Senha"
         />
