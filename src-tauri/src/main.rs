@@ -2,8 +2,9 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 #![allow(non_snake_case)]
 #![allow(unused)] // Comment soon as possible
-use crate::prelude::*;
 
+
+mod migrations;
 mod error;
 mod prelude;
 mod utils;
@@ -33,7 +34,7 @@ async fn database_test() -> Result<String, String> {
     let conn: Connection = Connection::open("./app.sqlite3").map_err(|err| err.to_string())?;
     // Imprimir a string JSON resultante
     // conn.execute(
-    //     "CREATE TABLE person (
+    //     "CREATE TABLE IF NOT EXISTS person (
     //         id   INTEGER PRIMARY KEY,
     //         name TEXT NOT NULL,
     //         password TEXT NOT NULL,
