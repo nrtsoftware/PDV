@@ -3,10 +3,8 @@ import { useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
-import Database from "tauri-plugin-sql-api";
-
 // sqlite. The path is relative to `tauri::api::path::BaseDirectory::App`.
-const db = await Database.load("sqlite:app.vaitomarnocustyles");
+// const db = await Database.load("sqlite:app.vaitomarnocustyles");
 // mysql
 // const db = await Database.load("mysql://user:pass@host/database");
 // postgres
