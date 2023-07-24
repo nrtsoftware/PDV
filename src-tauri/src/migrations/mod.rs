@@ -1,6 +1,6 @@
 use crate::prelude::*;
 mod admin;
 
-pub fn migrate() {
+pub fn boot() {
     admin::main();
 }
