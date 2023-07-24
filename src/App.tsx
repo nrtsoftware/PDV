@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Key } from "react";
 // import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="flex flex-col text-center ">
       <h1 className="text-4xl font-bold">CRM</h1>
-    {data.map((e: PersonType, k: Number) => <div key={k}> {e.name}  </div>)}
+    {data.map((e: PersonType, k: Key) => <div key={k}> {e.name}  </div>)}
       <div className="flex justify-center">
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="h-10 mx-5 logo vite" alt="Vite logo" />
