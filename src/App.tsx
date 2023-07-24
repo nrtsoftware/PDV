@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
@@ -21,13 +21,19 @@ function App() {
   // const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
-    async function database() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    await invoke("database_test")
-      .then((e: PromiseLike< String | void>) => setData(JSON.parse(e)))
-      .catch(e => console.log(e, 'maizenas erradas'));
-  }
-  database();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response: any = await invoke("database_test");
+        const parsedData: any = JSON.parse(response);
+        setData(parsedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
   // async function greet() {
   //   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
   //   setGreetMsg(await invoke("greet", { name }));
