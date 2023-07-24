@@ -173,7 +173,7 @@ async fn database_test() -> Result<String, String> {
     // Ok(())
 // }
 fn main() {
-    migrations::migrate();
+    // migrations::migrate();
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![database_test])
         .plugin(tauri_plugin_store::Builder::default().build())
