@@ -13,7 +13,7 @@ import "./App.css";
 // await db.execute("INSERT INTO ...");
 // oi
 
-type PersonType {
+type PersonType = {
   name: String,
   password: String,
 }
