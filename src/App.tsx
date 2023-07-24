@@ -12,6 +12,11 @@ import "./App.css";
 
 // await db.execute("INSERT INTO ...");
 // oi
+
+type PersonType {
+  name: String,
+  password: String,
+}
 function App() {
   // const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
@@ -19,7 +24,7 @@ function App() {
     async function database() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     await invoke("database_test")
-      .then(e => setData(JSON.parse(e)))
+      .then((e: PromiseLike< String | void>) => setData(JSON.parse(e)))
       .catch(e => console.log(e, 'maizenas erradas'));
   }
   database();
@@ -30,7 +35,7 @@ function App() {
   return (
     <div className="flex flex-col text-center ">
       <h1 className="text-4xl font-bold">CRM</h1>
-    {data.map((e,k) => <div key="k"> {e.name}  </div>)}
+    {data.map((e: PersonType, k: Number) => <div key={k}> {e.name}  </div>)}
       <div className="flex justify-center">
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="h-10 mx-5 logo vite" alt="Vite logo" />
