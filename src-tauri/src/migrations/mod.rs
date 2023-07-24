@@ -1,2 +1,6 @@
 use crate::prelude::*;
-mod admin;
+pub(crate) mod admin;
+
+pub fn migrate() {
+    admin::main();
+}
