@@ -108,11 +108,10 @@ fn main() {
     // controllers::boot();
     // migrations::boot();
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler!
-            [
+        .invoke_handler(tauri::generate_handler![
                 //user 
-                user_controller::database_test,
-                user_controller::login,
+                controllers::user_controller::database_test,
+                controllers::user_controller::login_user,
                 // more controllers
             ]
         )
