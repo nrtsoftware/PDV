@@ -27,6 +27,7 @@ type PersonType = {
 function App() {
   // const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [data, setData] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -41,9 +42,9 @@ function App() {
     fetchData();
   }, []);
 
-  async function login(e: any, name: String) {
+  async function login(e: any, name: String, password: String) {
     e.preventDefault();
-    await invoke("login_user", { name, password: '123' }).then((e) => {
+    await invoke("login_user", { name, password }).then((e) => {
       console.log(e);
     });
   }
@@ -70,7 +71,7 @@ function App() {
 
         <input type="password" className="rounded my-2 h-10 p-3 text-gray-600 text-semibold"
           
-          onChange={(e) => setName(e.currentTarget.value)}
+          onChange={(e) => setPassword(e.currentTarget.value)}
           placeholder="Senha"
         />
 
@@ -78,7 +79,7 @@ function App() {
         text-gray-300 font-semibold
         bg-transparent  border-gray-500
         hover:bg-neutral-600 hover:text-white hover:border-black" 
-        type="submit" onClick={(e) => login(e, name)}>Entrar</button>
+        type="submit" onClick={(e) => login(e, name, password)}>Entrar</button>
       </form>
       
       <span className="fixed bottom-5 right-5 flex text-lg">
