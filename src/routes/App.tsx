@@ -3,7 +3,8 @@ import { useState, useEffect, Key } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
-// SETTING WIP
+// SETTINGS WIP
+
 // import { Store } from "tauri-plugin-store-api";
 
 // const store = new Store(".settings.dat");
@@ -15,18 +16,9 @@ import "./App.css";
 // const val2 = await store.get("another-key");
 // console.log(val)
 // console.log(val2)
-// SETTING WIP
 
+// SETTINGS WIP
 
-// sqlite. The path is relative to `tauri::api::path::BaseDirectory::App`.
-// const db = await Database.load("sqlite:app.vaitomarnocustyles");
-// mysql
-// const db = await Database.load("mysql://user:pass@host/database");
-// postgres
-// const db = await Database.load("postgres://postgres:password@localhost/test");
-
-// await db.execute("INSERT INTO ...");
-// oi
 
 type PersonType = {
   name: String,
