@@ -103,12 +103,18 @@ struct Person {
     // Ok(())
 // }
 
-
+use crate::controllers::*;
 fn main() {
     // controllers::boot();
     // migrations::boot();
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![controllers::user_controller::database_test])
+        .invoke_handler(tauri::generate_handler!
+            [
+                //user
+                user_controller::database_test,
+                // more controllers
+            ]
+        )
 
         .plugin(tauri_plugin_store::Builder::default().build())
         
