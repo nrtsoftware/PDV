@@ -37,7 +37,6 @@ pub async fn database_test() -> Result<String, String> {
     //     "INSERT INTO person (name, data) VALUES (?1, ?2)",
     //     (&me2.name, &me2.data),
     // ).map_err(|err| err.to_string())?;
-
     let mut stmt = conn.prepare("SELECT id, name, password FROM person").map_err(|err| err.to_string())?;
     let person_iter = stmt.query_map([], |row| {
         Ok(Person {
@@ -68,11 +67,33 @@ pub async fn database_test() -> Result<String, String> {
 
 }
 
+struct User<'a> {
+    name: &'a str,
+    password: &'a str,
+}
+
+
 #[tauri::command]
-pub async fn login_user(name: &str) -> Result<String, String> {
+pub async fn login_user(name: &str, password: &str) -> Result<String, String> {
     let n: &str = "Nivs";
-    if(name == n) {
-        return Ok(format!("Funcionou!, {}! Voce está logado!", name))
+    let user = User {
+        name: name,
+        password: password,
+    };
+    let conn: Connection = Connection::open("../app.sqlite3").map_err(|err| format!("{}", err))?;
+    let mut stmt = conn.prepare("SELECT id, name, password FROM person WHERE name = ?1")
+        .map_err(|err| format!("{}", err))?;
+
+    let mut rows = stmt.query([&user.name]).map_err(|err| format!("{}", err))?;
+    if let Some(row) = rows.next().map_err(|err| format!("{}", err))? {
+        let password: String = row.get(2).map_err(|err| format!("{}", err))?;
+        if password == user.password {
+            return Ok(format!("Funcionou!, {}! Voce está logado!", name));
+        }
     }
+
     Ok(format!("Hello, {}! You've been greeted from Rust!", name))
 }
+
+
+

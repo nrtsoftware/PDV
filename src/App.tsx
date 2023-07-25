@@ -51,7 +51,7 @@ function App() {
 
   async function login(e: any, name: String) {
     e.preventDefault();
-    await invoke("login_user", { name }).then((e) => {
+    await invoke("login_user", { name, password: '123' }).then((e) => {
       console.log(e);
     });
   }
