@@ -1,6 +1,6 @@
 
 import "./App.css";
-import Dashboard from "./routes/Dashboard";
+
 
 // SETTINGS WIP
 
@@ -19,7 +19,8 @@ import Dashboard from "./routes/Dashboard";
 // SETTINGS WIP
 
 
-import Login from "./routes/Login"
+//import Login from "./routes/Login"
+import Dashboard from "./routes/Dashboard";
 
 const App = () => {
   return (
