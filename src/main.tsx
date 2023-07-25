@@ -5,7 +5,7 @@ import "./styles.css";
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import {Outlet} from 'react-router-dom'
 
-import ErrorPage from './routes/EroorPage'
+import ErrorPage from './routes/ErrorPage'
 
 import App from './routes/App';
 import Contact from './routes/Contact';
