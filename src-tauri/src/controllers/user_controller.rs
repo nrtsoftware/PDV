@@ -68,7 +68,3 @@ pub async fn database_test() -> Result<String, String> {
 
 }
 
-
-pub fn search_user() {
-
-}

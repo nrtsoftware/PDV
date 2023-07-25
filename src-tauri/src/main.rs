@@ -3,12 +3,12 @@
 #![allow(non_snake_case)]
 #![allow(unused)] // Comment soon as possible
 
-mod controllers;
-mod migrations;
-mod error;
 mod prelude;
 mod utils;
-
+mod error;
+mod migrations;
+mod controllers;
+use controllers::*;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 // #[tauri::command]
@@ -103,7 +103,7 @@ struct Person {
     // Ok(())
 // }
 
-use crate::controllers::*;
+
 fn main() {
     // controllers::boot();
     // migrations::boot();
