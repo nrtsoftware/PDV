@@ -70,5 +70,9 @@ pub async fn database_test() -> Result<String, String> {
 
 #[tauri::command]
 pub async fn login_user(name: &str) -> Result<String, String> {
+    let n: &str = "Nivs";
+    if(name == n) {
+        return Ok(format!("Funcionou!, {}! Voce está logado!", name))
+    }
     Ok(format!("Hello, {}! You've been greeted from Rust!", name))
 }
