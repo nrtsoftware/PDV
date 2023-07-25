@@ -69,6 +69,6 @@ pub async fn database_test() -> Result<String, String> {
 }
 
 #[tauri::command]
-pub async fn login () {
-    format!("test");
+pub async fn login_user(name: &str) -> Result<String, String> {
+    Ok(format!("Hello, {}! You've been greeted from Rust!", name))
 }

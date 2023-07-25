@@ -49,9 +49,9 @@ function App() {
     fetchData();
   }, []);
 
-  async function login(name: String) {
-    await invoke("login", { name });
-  }
+  // async function login(name: String) {
+  //   await invoke("login", { name });
+  // }
   // async function greet() {
   //   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
   //   setGreetMsg(await invoke("greet", { name }));
@@ -83,7 +83,7 @@ function App() {
         text-gray-300 font-semibold
         bg-transparent  border-gray-500
         hover:bg-neutral-600 hover:text-white hover:border-black" 
-        type="submit" onClick={() => login(name)}>Entrar</button>
+        type="submit">Entrar</button>
       </form>
       
       <span className="fixed bottom-5 right-5 flex text-lg">
