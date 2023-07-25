@@ -5,7 +5,7 @@ use crate::*;
 #[tauri::command]
 pub async fn database_test() -> Result<String, String> {
     // Err("This failed!");
-    let conn: Connection = Connection::open("./app.sqlite3").map_err(|err| err.to_string())?;
+    let conn: Connection = Connection::open("../app.sqlite3").map_err(|err| err.to_string())?;
     // Imprimir a string JSON resultante
     // conn.execute(
     //     "CREATE TABLE IF NOT EXISTS person (

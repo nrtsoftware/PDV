@@ -9,7 +9,7 @@ let migrations = Migrations::new(vec![
     //M::up("ALTER TABLE friend ADD COLUMN email TEXT;"),
 ]);
 
-let mut conn = Connection::open("./app.sqlite3").unwrap();
+let mut conn = Connection::open("../app.sqlite3").unwrap();
 
 // Apply some PRAGMA, often better to do it outside of migrations
 conn.pragma_update(None, "journal_mode", &"WAL").unwrap();
