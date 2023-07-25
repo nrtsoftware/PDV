@@ -106,7 +106,7 @@ struct Person {
 
 fn main() {
     // controllers::boot();
-     migrations::boot();
+    migrations::boot();
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
                 //user 
