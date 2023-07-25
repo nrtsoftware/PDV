@@ -75,7 +75,6 @@ struct User<'a> {
 
 #[tauri::command]
 pub async fn login_user(name: &str, password: &str) -> Result<String, String> {
-    let n: &str = "Nivs";
     let user = User {
         name: name,
         password: password,
