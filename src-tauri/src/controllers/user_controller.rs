@@ -68,3 +68,7 @@ pub async fn database_test() -> Result<String, String> {
 
 }
 
+#[tauri::command]
+pub async fn login () {
+    format!("test");
+}

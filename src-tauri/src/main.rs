@@ -110,8 +110,9 @@ fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler!
             [
-                //user
+                //user 
                 user_controller::database_test,
+                user_controller::login,
                 // more controllers
             ]
         )
