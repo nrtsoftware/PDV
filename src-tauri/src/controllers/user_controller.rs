@@ -1,7 +1,7 @@
 use rusqlite::{Connection, Result};
 use serde_json::json;
 use crate::*;
-
+use crate::models::User;
 #[tauri::command]
 pub async fn database_test() -> Result<String, String> {
     // Err("This failed!");
