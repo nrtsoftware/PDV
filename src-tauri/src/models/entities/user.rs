@@ -1,6 +1,7 @@
 use crate::{prelude::*, error};
 
 struct User {
+  id: u8,
   name: String,
   login: String,
   password: String,
@@ -8,8 +9,8 @@ struct User {
 }
 
 impl User  {
-  fn new(name: String, login: String, password: String, function: String) -> User {
-    User { name, login, password, function}
+  fn new(id: u8, name: String, login: String, password: String, function: String) -> User {
+    User {id, name, login, password, function}
   }
   fn get_name(&self) -> String {
     self.name.clone()
