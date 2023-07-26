@@ -18,7 +18,7 @@ impl User  {
   fn check_function(&self) -> String {
     self.function.clone()
   }
-  fn change_password(&mut self, password: String) -> String {
+  pub fn change_password(&mut self, password: String) -> String {
     self.password = password;
     return "Password alterado com sucesso".to_string()
   }
