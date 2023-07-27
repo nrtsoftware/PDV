@@ -1,28 +1,24 @@
 use crate::{prelude::*, error};
-
+use crate::models::model::*;
 struct User {
-  id: u8,
-  name: String,
-  login: String,
-  password: String,
-  function: String,
+  table: String,
+  model: Model,
 }
 
-impl User  {
-  fn new(id: u8, name: String, login: String, password: String, function: String) -> User {
-    User {id, name, login, password, function}
+impl User {
+  fn new() -> User {
+    let model: Model = model_connect();
+    let table: String = "user".to_string();
+    User {table, model}
   }
-  fn get_name(&self) -> String {
-    self.name.clone()
-  }
-  fn check_function(&self) -> String {
-    self.function.clone()
-  }
-  pub fn change_password(&mut self, password: String) -> String {
-    self.password = password;
-    return "Password alterado com sucesso".to_string()
+  fn find_by_name(&self) {
+    self.model.select(format!("SELECT name FROM {}", self.table.clone()));
   }
   
+}
+
+fn main() {
+
 }
 // trait login{
 //   fn 
