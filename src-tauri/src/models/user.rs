@@ -1,19 +1,29 @@
+use rusqlite::Connection;
+
 use crate::{prelude::*, error};
 use crate::models::model::*;
 struct User {
   table: String,
-  model: Model,
+  model: std::result::Result<Connection, rusqlite::Error> ,
 }
 
 impl User {
   fn new() -> User {
-    let model: Model = model_connect();
+    let model: std::result::Result<Connection, rusqlite::Error>  = model_connect();
     let table: String = "user".to_string();
     User {table, model}
   }
   fn find_by_name(&self) {
-    self.model.select(format!("SELECT name FROM {}", self.table.clone()));
-  }
+    match &self.model {
+        Ok(connection) => {
+            connection.prepare(&format!("SELECT name FROM {}", self.table)).unwrap();
+        },
+        Err(err) => {
+            eprintln!("Error connecting to the database: {:?}", err);
+        }
+    }
+}
+
   
 }
 

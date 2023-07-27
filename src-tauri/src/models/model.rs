@@ -13,7 +13,7 @@ impl Model {
     }
 }
 
-pub fn model_connect() -> Model {
+pub fn model_connect() -> std::result::Result<Connection, rusqlite::Error>  {
     let model: Model = Model::new("../sqlite3".to_string());
     return model.connect();
 }
