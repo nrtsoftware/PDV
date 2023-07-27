@@ -11,7 +11,7 @@ struct UserData {
 pub struct User {
   table: String,
   model: std::result::Result<Connection, rusqlite::Error>,
-  data: Data,
+  data: UserData,
 }
 
 impl User {
