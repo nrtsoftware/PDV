@@ -9,8 +9,12 @@ struct User {
 
 impl User {
   fn new() -> User {
+    // CONSTS
+    const TABLE_NAME: &str = "User";
+    
+    
     let model: std::result::Result<Connection, rusqlite::Error>  = model_connect();
-    let table: String = "user".to_string();
+    let table: String = TABLE_NAME.to_string();
     User {table, model}
   }
   fn find_by_name(&self) {
